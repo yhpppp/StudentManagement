@@ -24,6 +24,7 @@ namespace StudentManagement
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,43 +35,16 @@ namespace StudentManagement
             {
                 app.UseDeveloperExceptionPage();
             }
-            /*
-            //自定义指定为默认文档
-            DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
-            defaultFilesOptions.DefaultFileNames.Clear();
-            defaultFilesOptions.DefaultFileNames.Add("test.html");
-            //添加默认文件中间件
-            app.UseDefaultFiles(defaultFilesOptions);
-            */
-            /*
-            // 添加默认文件中间件
-            app.UseDefaultFiles();
-            // 添加静态文件中间件
+
             app.UseStaticFiles();
-            */
 
-            // UseFileServer 结合了UseStaticFiles，UseDefaultFiles和UseDirectoryBrowser中间件的功能。
-
-            app.UseFileServer();
-            app.Use(async (context, next) =>
-            {
-                // 处理乱码
-                context.Response.ContentType = "text/plain; charset=utf-8";
-
-                // 获取当前进程名称
-                string name = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
-
-                // 获取appsettings.json中的MyKey
-                string MyKey = _configration["MyKey"];
-                //await context.Response.WriteAsync("1-middleware");
-                await next();
-            });
+            app.UseMvcWithDefaultRoute();
 
             //终端中间件
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync(env.EnvironmentName);
-                //await context.Response.WriteAsync("2-terminal middleware");
+          
+               await context.Response.WriteAsync("Hello World");
 
             });
 
