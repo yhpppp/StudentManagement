@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+@model IEnumerable<StudentManagement.Models.Student>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>学生列表</title>
+</head>
+<body>
+    <table>
+        <thead>
+           <tr><th>ID</th><th>姓名</th><th>主修科目</th></tr>
+        </thead>
+      <tbody>
+           @foreach (var student in Model)
+           {
+          <tr>
+              <td>@student.Id</td>
+              <td>@student.Name</td>
+              <td>@student.Major</td>
+          </tr>
+           }
+      </tbody>
+    </table>
+</body>
+</html>
