@@ -42,15 +42,16 @@ namespace StudentManagement
 
             app.UseStaticFiles();
 
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
+            app.UseMvc();
 
             //终端中间件
-            app.Run(async (context) =>
-            {
+            //app.Run(async (context) =>
+            //{
           
-               await context.Response.WriteAsync("Hello World");
+            //   await context.Response.WriteAsync("Hello World");
 
-            });
+            //});
 
         }
     }

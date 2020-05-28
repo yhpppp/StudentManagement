@@ -9,14 +9,19 @@ using System.Threading.Tasks;
 
 namespace StudentManagement.Controllers
 {
-    
+    [Route("Home")]
     public class HomeController : Controller
     {
+
         private readonly IStudentRepository _studentRepository;
+
 
         public HomeController(IStudentRepository studentRepository) {
             _studentRepository = studentRepository;
         }
+        [Route("/")]
+        [Route("")]
+        [Route("Index")]
         public ViewResult Index()
         {
             // 查询所有学生信息
@@ -24,11 +29,13 @@ namespace StudentManagement.Controllers
             // 将查询到的数据传递到视图层
             return View(model); 
         }
-        public ViewResult Details() 
+        // id参数可选
+        [Route("Details/{id?}")]
+        public ViewResult Details(int? id) 
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Student = _studentRepository.GetStudent(1),
+                Student = _studentRepository.GetStudent(id ?? 1),
                 PageTitle = "这是详情页"
             };
 
