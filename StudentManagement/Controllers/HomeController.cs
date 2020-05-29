@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace StudentManagement.Controllers
 {
-    [Route("Home")]
+    //[Route("Home")]
+    [Route("[controller]/[action]")]
     public class HomeController : Controller
     {
 
@@ -20,8 +21,8 @@ namespace StudentManagement.Controllers
             _studentRepository = studentRepository;
         }
         [Route("/")]
-        [Route("")]
-        [Route("Index")]
+        //[Route("")]
+        //[Route("Index")]
         public ViewResult Index()
         {
             // 查询所有学生信息
@@ -30,7 +31,7 @@ namespace StudentManagement.Controllers
             return View(model); 
         }
         // id参数可选
-        [Route("Details/{id?}")]
+        //[Route("Details/{id?}")]
         public ViewResult Details(int? id) 
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
@@ -40,6 +41,11 @@ namespace StudentManagement.Controllers
             };
 
             return View(homeDetailsViewModel);
+        }
+
+        public ViewResult Create()
+        {
+            return View();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace StudentManagement.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Major { get; set; }
+        public MajorEnum Major { get; set; }
         public string Email { get; set; }
     }
 
@@ -33,21 +33,18 @@ namespace StudentManagement.Models
                 {
                     Id = 1,
                     Name = "刘一",
-                    Major = "一年级",
                     Email = "11111111111@gmail.com",
                 },
                  new Student()
                 {
                     Id = 2,
                     Name = "陈二",
-                    Major = "二年级",
                     Email = "2222222222@gmail.com"
                 },
                   new Student()
                 {
                     Id = 3,
                     Name = "张三",
-                    Major = "3年级",
                     Email = "33333333333@gmail.com"
                 },
                 //   new Student()
